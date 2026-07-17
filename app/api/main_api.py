@@ -63,7 +63,7 @@ def predict_news(request: NewsRequest):
     try:
         # Explainer initialization is done internally
         res = explainer.explain(request.text)
-        return {"prediction": res["prediction"], "confidence": res["probability"]}
+        return {"prediction": res["prediction"]}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
 

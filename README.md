@@ -36,7 +36,6 @@ This project demonstrates the complete lifecycle of an AI application—from dat
 - ✅ Sentiment Analysis
 - ✅ Topic Modeling
 - ✅ Explainable AI (LIME / SHAP)
-- ✅ Confidence Score Prediction
 - ✅ REST API using FastAPI
 - ✅ Interactive Streamlit Dashboard
 - ✅ Docker Support

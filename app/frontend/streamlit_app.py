@@ -193,7 +193,6 @@ if page == "Home / News Detector":
                     with c1:
                         # Verdict card
                         verdict = pred_res["prediction"]
-                        confidence = pred_res["confidence"] * 100
 
                         if verdict == "FAKE":
                             st.markdown(
@@ -201,7 +200,6 @@ if page == "Home / News Detector":
                                 <div style='background-color: rgba(255, 75, 75, 0.1); border: 2px solid #FF4B4B; border-radius: 12px; padding: 25px; text-align: center;'>
                                     <h3 style='color: #FF4B4B; margin: 0; font-size: 1.5rem;'>PREDICTION</h3>
                                     <h1 style='color: #FF4B4B; font-size: 3.5rem; font-weight: 800; margin: 10px 0;'>🚨 FAKE NEWS</h1>
-                                    <h3 style='color: #ccc; margin: 0;'>Confidence: {confidence:.2f}%</h3>
                                 </div>
                                 """,
                                 unsafe_allow_html=True,
@@ -212,7 +210,6 @@ if page == "Home / News Detector":
                                 <div style='background-color: rgba(46, 204, 113, 0.1); border: 2px solid #2ECC71; border-radius: 12px; padding: 25px; text-align: center;'>
                                     <h3 style='color: #2ECC71; margin: 0; font-size: 1.5rem;'>PREDICTION</h3>
                                     <h1 style='color: #2ECC71; font-size: 3.5rem; font-weight: 800; margin: 10px 0;'>✅ REAL NEWS</h1>
-                                    <h3 style='color: #ccc; margin: 0;'>Confidence: {confidence:.2f}%</h3>
                                 </div>
                                 """,
                                 unsafe_allow_html=True,
@@ -487,13 +484,8 @@ elif page == "Explainability Insights":
 
         st.markdown("### Prediction Overview")
         verdict = explain_res["prediction"]
-        conf = explain_res["probability"] * 100
         
-        col1, col2 = st.columns(2)
-        with col1:
-            st.metric("Model Classification Verdict", verdict)
-        with col2:
-            st.metric("Model Confidence", f"{conf:.2f}%")
+        st.metric("Model Classification Verdict", verdict)
 
         st.markdown("### Word Importance Distribution (SHAP)")
         st.write("Hover or look at the bar chart below to see the impact of each word:")
